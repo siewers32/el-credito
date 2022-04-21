@@ -11,6 +11,9 @@ $bank->addTransactie(new Transactie("geert", "bank", 100));
 $bank->addTransactie(new Transactie("geert", "albert", 20));
 $bank->addTransactie(new Transactie("albert", "bank", 100));
 $bank->addTransactie(new Transactie("albert", "geert", 22));
+$bank->addTransactie(new Transactie("geert", "albert", 11));
+$bank->addTransactie(new Transactie("albert", "geert", 8));
+$bank->addTransactie(new Transactie("albert", "geert", 18));
 ?>
 
 <?php foreach($bank->getRekeningen() as $r) { ?>
@@ -29,4 +32,8 @@ $bank->addTransactie(new Transactie("albert", "geert", 22));
         <tr><td colspan="2">Totaal: <?= $bank->getSaldoFromRekening($r->getEigenaar()) ?></td></tr>
     </table>
 <?php } ?>
-
+<ul>
+<?php foreach($bank->getMessages() as $m) { ?>
+    <li><?= $m ?></li>
+<?php } ?>
+</ul>

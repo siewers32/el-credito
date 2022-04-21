@@ -11,5 +11,4 @@ class Rekening
     public function getEigenaar() {
         return $this->eigenaar;
     }
-
 }
