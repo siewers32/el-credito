@@ -32,6 +32,8 @@ class Bank
         return $this->messages;
     }
 
+
+
     public function checkRekeningEigenaar(Transactie $t) {
         $ontvanger = false;
         $betaler = false;
@@ -39,7 +41,10 @@ class Bank
             if ($t->getOntvanger() == $r->getEigenaar()) {
                 $ontvanger = true;
             } elseif ($t->getBetaler() == $r->getEigenaar()) {
-                $betaler = true;
+                if($this->getSaldoFromRekening($r->getEigenaar()) > $t->getBedrag()
+                || $r->getEigenaar() == "bank" ) {
+                    $betaler = true;
+                }
             }
         }
         return $ontvanger && $betaler;

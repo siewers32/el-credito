@@ -26,10 +26,13 @@ $bank->addTransactie(new Transactie("albert", "geert", 18));
             <tr>
                 <td><?= $t->getOntvanger() ?></td>
                 <td><?= $t->getBetaler() ?></td>
-                <td><?= $t->getBedrag() ?></td>
+                <td style="text-align: right;">
+                    <?php echo ($t->getOntvanger() != $r->getEigenaar()) ? "-" : NULL; ?>
+                    <?= $t->getBedrag() ?>
+                </td>
             </tr>
         <?php } ?>
-        <tr><td colspan="2">Totaal: <?= $bank->getSaldoFromRekening($r->getEigenaar()) ?></td></tr>
+        <tr><td colspan="3" style="text-align:right;">Totaal: <?= $bank->getSaldoFromRekening($r->getEigenaar()) ?></td></tr>
     </table>
 <?php } ?>
 <ul>
